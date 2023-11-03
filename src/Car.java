@@ -49,7 +49,7 @@ public class Car extends Movable {
 
     protected void decrementSpeed(double amount) {}
 
-    // TODO fix this method according to lab pm
+    // TODO fix this method according to lab pm :)
     public void gas(double amount){
         incrementSpeed(amount);
     }
