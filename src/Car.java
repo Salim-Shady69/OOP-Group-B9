@@ -2,17 +2,16 @@ package src;
 
 import java.awt.*;
 
-public class Car {
+public class Car extends Movable {
 
     protected int nrDoors;
-
     protected double enginePower;
-
     protected double currentSpeed;
-
     protected Color color;
-
     protected String modelName;
+    protected double xPos = 0;
+    protected double yPos = 0;
+    protected int direction = 0;
 
     public int getNrDoors(){
         return nrDoors;
@@ -60,4 +59,27 @@ public class Car {
         decrementSpeed(amount);
     }
 
+    @Override
+    void move() {
+        switch(direction) {
+            case 0: // increase x
+                xPos += getCurrentSpeed();
+            case 90: // increase y
+                yPos += getCurrentSpeed();
+            case 180: // decrease x
+                xPos -= getCurrentSpeed();
+            case 270: // decrease y
+                yPos -= getCurrentSpeed();
+        }
+    }
+
+    @Override
+    void turnLeft() {
+        direction = (direction + 90) % 360;
+    }
+
+    @Override
+    void turnRight() {
+        direction = (direction - 90) % 360;
+    }
 }
