@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +9,7 @@ public class Car implements Movable {
     protected double currentSpeed = 0;
     protected Color color;
     protected String modelName;
-    protected double xPos = 0;
-    protected double yPos = 0;
+    protected Position position = new Position(0,0);
     protected int direction = 0;
 
     public int getNrDoors(){
@@ -64,13 +62,13 @@ public class Car implements Movable {
     public void move() {
         switch(direction) {
             case 0: // increase x
-                xPos += getCurrentSpeed();
+                position.setX(position.getX() + getCurrentSpeed());
             case 90: // increase y
-                yPos += getCurrentSpeed();
+                position.setY(position.getY() + getCurrentSpeed());
             case 180: // decrease x
-                xPos -= getCurrentSpeed();
+                position.setX(position.getX() - getCurrentSpeed());
             case 270: // decrease y
-                yPos -= getCurrentSpeed();
+                position.setY(position.getY() - getCurrentSpeed());
         }
     }
 
@@ -86,12 +84,7 @@ public class Car implements Movable {
     }
 
     @Override
-    public Map<String, Double> getPosition(){
-        Map<String, Double> coordinates = new HashMap<>();
-        coordinates.put("x", xPos);
-        coordinates.put("y", yPos);
-        return coordinates;
-    }
+    public Position getPosition() { return position; }
 
     @Override
     public int getDirection() { return direction; }

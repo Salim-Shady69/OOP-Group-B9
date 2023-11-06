@@ -40,13 +40,11 @@ public class Mekaniker {
 
     @Test
     public void testStopEngine() {
-        double volvoStop = volvo.getCurrentSpeed();
-        double saabStop = saab.getCurrentSpeed();
 
         volvo.startEngine();
         saab.startEngine();
 
-        assertTrue((volvo.getCurrentSpeed() == 0) && (saab.getCurrentSpeed() == 0));
+        assertTrue((volvo.getCurrentSpeed() != 0) && (saab.getCurrentSpeed() != 0));
 
 
     }
@@ -69,9 +67,10 @@ public class Mekaniker {
 
     @Test
     public void testMove(){
-        Map<String, Double> initialSaabPos = saab.getPosition();
+
 
     }
+
 
     @Test
     public void testTurnLeft() {
