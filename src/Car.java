@@ -1,8 +1,7 @@
-package src;
 
 import java.awt.*;
 
-public class Car extends Movable {
+public class Car implements Movable {
 
     protected int nrDoors;
     protected double enginePower;
@@ -60,7 +59,7 @@ public class Car extends Movable {
     }
 
     @Override
-    void move() {
+    public void move() {
         switch(direction) {
             case 0: // increase x
                 xPos += getCurrentSpeed();
@@ -74,12 +73,12 @@ public class Car extends Movable {
     }
 
     @Override
-    void turnLeft() {
+    public void turnLeft() {
         direction = (direction + 90) % 360;
     }
 
     @Override
-    void turnRight() {
+    public void turnRight() {
         direction = (direction - 90) % 360;
     }
 }

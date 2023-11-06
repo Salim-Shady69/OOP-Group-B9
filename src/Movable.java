@@ -1,10 +1,5 @@
-package src;
 
-public abstract class Movable {
-
-    protected double xPos;
-    protected double yPos;
-    protected double direction;
+interface Movable {
 
     abstract void move();
     abstract void turnLeft();
