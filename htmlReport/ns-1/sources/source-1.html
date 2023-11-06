@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Car</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Car (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Car</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    47,1%
+  </span>
+  <span class="absValue">
+    (8/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42,9%
+  </span>
+  <span class="absValue">
+    (12/28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+<b class="fc">&nbsp;public class Car implements Movable {</b>
+&nbsp;
+&nbsp;    protected int nrDoors;
+&nbsp;    protected double enginePower;
+<b class="fc">&nbsp;    protected double currentSpeed = 0;</b>
+&nbsp;    protected Color color;
+&nbsp;    protected String modelName;
+<b class="fc">&nbsp;    protected double xPos = 0;</b>
+<b class="fc">&nbsp;    protected double yPos = 0;</b>
+<b class="fc">&nbsp;    protected int direction = 0;</b>
+&nbsp;
+&nbsp;    public int getNrDoors(){
+<b class="fc">&nbsp;        return nrDoors;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getEnginePower(){
+<b class="fc">&nbsp;        return enginePower;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getCurrentSpeed(){
+<b class="fc">&nbsp;        return currentSpeed;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Color getColor(){
+<b class="fc">&nbsp;        return color;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setColor(Color clr) {
+<b class="fc">&nbsp;        color = clr;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void startEngine(){
+<b class="fc">&nbsp;        currentSpeed = 0.1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void stopEngine(){
+<b class="fc">&nbsp;        currentSpeed = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    protected double speedFactor(){
+<b class="nc">&nbsp;        return enginePower * 0.01;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    protected void incrementSpeed(double amount) {}</b>
+&nbsp;
+<b class="nc">&nbsp;    protected void decrementSpeed(double amount) {}</b>
+&nbsp;
+&nbsp;    // TODO fix this method according to lab pm :)
+&nbsp;    public void gas(double amount){
+<b class="nc">&nbsp;        incrementSpeed(amount);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // TODO fix this method according to lab pm
+&nbsp;    public void brake(double amount){
+<b class="nc">&nbsp;        decrementSpeed(amount);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void move() {
+<b class="nc">&nbsp;        switch(direction) {</b>
+&nbsp;            case 0: // increase x
+<b class="nc">&nbsp;                xPos += getCurrentSpeed();</b>
+&nbsp;            case 90: // increase y
+<b class="nc">&nbsp;                yPos += getCurrentSpeed();</b>
+&nbsp;            case 180: // decrease x
+<b class="nc">&nbsp;                xPos -= getCurrentSpeed();</b>
+&nbsp;            case 270: // decrease y
+<b class="nc">&nbsp;                yPos -= getCurrentSpeed();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void turnLeft() {
+<b class="nc">&nbsp;        direction = (direction + 90) % 360;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void turnRight() {
+<b class="nc">&nbsp;        direction = (direction - 90) % 360;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Map&lt;String, Double&gt; getPosition(){
+<b class="nc">&nbsp;        Map&lt;String, Double&gt; coordinates = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        coordinates.put(&quot;x&quot;, xPos);</b>
+<b class="nc">&nbsp;        coordinates.put(&quot;y&quot;, yPos);</b>
+<b class="nc">&nbsp;        return coordinates;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-06 11:30</div>
+</div>
+</body>
+</html>

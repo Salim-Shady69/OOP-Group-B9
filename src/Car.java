@@ -1,11 +1,13 @@
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Car implements Movable {
 
     protected int nrDoors;
     protected double enginePower;
-    protected double currentSpeed;
+    protected double currentSpeed = 0;
     protected Color color;
     protected String modelName;
     protected double xPos = 0;
@@ -28,7 +30,7 @@ public class Car implements Movable {
         return color;
     }
 
-    public void setColor(Color clr){
+    public void setColor(Color clr) {
         color = clr;
     }
 
@@ -79,6 +81,18 @@ public class Car implements Movable {
 
     @Override
     public void turnRight() {
-        direction = (direction - 90) % 360;
+        //direction = (direction - 90) % 360;
+        direction = ((direction - 90) % 360 + 360) % 360;
     }
+
+    @Override
+    public Map<String, Double> getPosition(){
+        Map<String, Double> coordinates = new HashMap<>();
+        coordinates.put("x", xPos);
+        coordinates.put("y", yPos);
+        return coordinates;
+    }
+
+    @Override
+    public int getDirection() { return direction; }
 }
