@@ -4,6 +4,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({   VolvoMekaniker.class,
                         SaabMekaniker.class,
-                        Mekaniker.class })
+                        MekanikerTest.class })
 public class BilProvningen {
 }

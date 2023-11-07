@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Car implements Movable {
+public abstract class Car implements Movable {
 
     protected int nrDoors;
     protected double enginePower;

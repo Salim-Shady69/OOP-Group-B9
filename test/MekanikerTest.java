@@ -2,9 +2,8 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import java.awt.*;
-import java.util.Map;
 
-public class Mekaniker {
+public class MekanikerTest {
 
     private Saab95 saab;
     private Volvo240 volvo;
