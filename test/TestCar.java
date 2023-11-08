@@ -28,12 +28,8 @@ public class TestCar {
 
     @Test
     public void testStartEngine(){
-        double volvoStop = volvo.getCurrentSpeed();
-        double saabStop = saab.getCurrentSpeed();
-
         volvo.startEngine();
         saab.startEngine();
-
         assertTrue((volvo.getCurrentSpeed() > 0) && (saab.getCurrentSpeed() > 0));
     }
 
@@ -130,12 +126,21 @@ public class TestCar {
     }
 
     @Test
-    public void testGasReducesSpeed(){
-        volvo.gas(-10);
-        saab.gas(-1);
+    public void testTurnFullRotationLeft(){
+        volvo.turnLeft();
+        volvo.turnLeft();
+        volvo.turnLeft();
+        volvo.turnLeft();
+
+        assertEquals(0, volvo.getDirection(), 0);
     }
+    @Test
+    public void testTurnFullRotationRight(){
+        volvo.turnRight();
+        volvo.turnRight();
+        volvo.turnRight();
+        volvo.turnRight();
 
-
-
-
+        assertEquals(0, volvo.getDirection(), 0);
+    }
 }
