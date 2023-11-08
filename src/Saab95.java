@@ -1,4 +1,3 @@
-
 import java.awt.*;
 
 public class Saab95 extends Car {
@@ -35,7 +34,6 @@ public class Saab95 extends Car {
     }
 
     protected void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
-        //currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 }
