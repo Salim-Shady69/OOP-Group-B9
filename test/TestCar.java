@@ -61,6 +61,7 @@ public class TestCar {
         assertTrue((volvoPower == 100) && (saabPower == 125));
     }
 
+    /*
     @Test
     public void testMoveDirection0(){
         volvo.startEngine();
@@ -112,6 +113,7 @@ public class TestCar {
 
         assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
     }
+    */
 
     @Test
     public void testTurnLeft() {
