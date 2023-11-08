@@ -38,7 +38,10 @@ public class TestCar {
         volvo.startEngine();
         saab.startEngine();
 
-        assertTrue((volvo.getCurrentSpeed() != 0) && (saab.getCurrentSpeed() != 0));
+        volvo.stopEngine();
+        saab.stopEngine();
+
+        assertTrue((volvo.getCurrentSpeed() == 0) && (saab.getCurrentSpeed() == 0));
     }
 
     @Test
