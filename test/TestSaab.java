@@ -8,22 +8,22 @@ public class TestSaab {
     @Before
     public void init() {
         saab = new Saab95();
+        saab.setTurboOn();
 
     }
 
     @Test
     public void testSetSaabTurboOn() {
+        saab.setTurboOff();
         boolean startValue = saab.getTurbo();
-
         saab.setTurboOn();
-
         assertTrue(startValue != saab.getTurbo());
     }
 
 
     @Test
     public void testSetSaabTurboOff() {
-        saab.setTurboOn();
+
         boolean startValue = saab.getTurbo();
         saab.setTurboOff();
 
@@ -32,7 +32,7 @@ public class TestSaab {
 
     @Test
     public void testSaabSpeedFactorTurboOn() {
-        saab.setTurboOn();
+
         double Factor = saab.speedFactor();
         assertEquals(1.625, Factor, 0);
     }
@@ -53,7 +53,7 @@ public class TestSaab {
 
     @Test
     public void testSaabIncrementSpeedTurboOn(){
-        saab.setTurboOn();
+
         saab.incrementSpeed(1);
         assertEquals(1.625, saab.getCurrentSpeed(), 0);
     }
@@ -68,7 +68,7 @@ public class TestSaab {
 
     @Test
     public void testSaabDecrementSpeedTurboOn(){
-        saab.setTurboOn();
+
         saab.incrementSpeed(1);
         saab.decrementSpeed(0.5);
         assertEquals(0.8125, saab.getCurrentSpeed(), 0.01);
@@ -76,7 +76,7 @@ public class TestSaab {
 
     @Test
     public void testSaabGasTurboOn() {
-        saab.setTurboOn();
+
         saab.gas(1);
         assertEquals(1.625, saab.getCurrentSpeed(), 0);
     }
@@ -90,7 +90,7 @@ public class TestSaab {
 
     @Test
     public void testSaabBrakeTurboOn() {
-        saab.setTurboOn();
+
         saab.gas(1);
         saab.brake(0.5);
         assertEquals(0.8125, saab.getCurrentSpeed(), 0);
@@ -116,12 +116,12 @@ public class TestSaab {
         saab.gas(1);
         saab.gas(1);
         saab.brake(1000000);
-        assertTrue(saab.getCurrentSpeed() == 1.25);
+        assertEquals(1.25, saab.getCurrentSpeed(), 0.0);
 
     }
     @Test
     public void testSaabHighGasTurboOn(){
-        saab.setTurboOn();
+
         saab.gas(1);
         double cappedGas = saab.getCurrentSpeed();
         saab.gas(10);
