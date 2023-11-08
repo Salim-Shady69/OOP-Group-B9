@@ -106,7 +106,9 @@ public class TestSaab {
 
     @Test
     public void testSaabCrazySpeed(){
-        saab.gas(10000);
+        for (int i = 0; i < 10000; i++) {
+            saab.gas(1);
+        }
         assertTrue(saab.getCurrentSpeed() <= saab.getEnginePower());
     }
 

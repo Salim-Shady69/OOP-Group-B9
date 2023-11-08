@@ -51,8 +51,10 @@ public class TestVolvo {
 
     @Test
     public void testVolvoCrazyGas(){
-        volvo.gas(100000);
-        assertEquals(1.25, volvo.getCurrentSpeed(), 0);
+        for (int i = 0; i < 10000; i++) {
+            volvo.gas(1);
+        }
+        assertEquals(volvo.getEnginePower(), volvo.getCurrentSpeed(), 0);
     }
 
     @Test
