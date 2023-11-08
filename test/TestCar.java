@@ -57,60 +57,6 @@ public class TestCar {
         assertTrue((volvoPower == 100) && (saabPower == 125));
     }
 
-    /*
-    @Test
-    public void testMoveDirection0(){
-        volvo.startEngine();
-        double volvoSpeed = volvo.getCurrentSpeed();
-        double expectedX = 0 + volvoSpeed;
-        double expectedY = 0;
-        volvo.move();
-        Position newPosition = volvo.getPosition();
-
-        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
-    }
-
-    @Test
-    public void testMoveDirection90(){
-        volvo.startEngine();
-        volvo.turnLeft();
-        double volvoSpeed = volvo.getCurrentSpeed();
-        double expectedX = 0;
-        double expectedY = 0 + volvoSpeed;
-        volvo.move();
-        Position newPosition = volvo.getPosition();
-
-        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
-    }
-
-    @Test
-    public void testMoveDirection180(){
-        volvo.startEngine();
-        volvo.turnLeft();
-        volvo.turnLeft();
-        double volvoSpeed = volvo.getCurrentSpeed();
-        double expectedX = 0 - volvoSpeed;
-        double expectedY = 0;
-        volvo.move();
-        Position newPosition = volvo.getPosition();
-
-        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
-    }
-
-    @Test
-    public void testMoveDirection270(){
-        volvo.startEngine();
-        volvo.turnRight();
-        double volvoSpeed = volvo.getCurrentSpeed();
-        double expectedX = 0;
-        double expectedY = 0 - volvoSpeed;
-        volvo.move();
-        Position newPosition = volvo.getPosition();
-
-        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
-    }
-    */
-
     @Test
     public void testTurnLeft() {
         volvo.turnLeft();
