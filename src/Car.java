@@ -44,14 +44,14 @@ public abstract class Car implements Movable {
 
     protected abstract void decrementSpeed(double amount);
 
-    // TODO fix this method according to lab pm :)
+    //Math.x lines ensures that speed cannot be increased by >1 or <0
     public void gas(double amount){
         double upperCheck = Math.min(amount, 1);
         double adjustedAmount = Math.max(upperCheck, 0);
         incrementSpeed(adjustedAmount);
     }
 
-    // TODO fix this method according to lab pm
+    //Math.x lines ensures that speed cannot be decreased by >1 or <0
     public void brake(double amount){
         double upperCheck = Math.min(amount, 1);
         double adjustedAmount = Math.max(upperCheck, 0);
@@ -76,6 +76,7 @@ public abstract class Car implements Movable {
         }
     }
 
+    // Modulo 360 to ensure that values over 360 are not possible
     @Override
     public void turnLeft() {
         direction = (direction + 90) % 360;
@@ -83,8 +84,7 @@ public abstract class Car implements Movable {
 
     @Override
     public void turnRight() {
-        //direction = (direction - 90) % 360;
-        direction = ((direction - 90) % 360 + 360) % 360;
+        direction = ((direction - 90) % 360 + 360) % 360; // Java modulo negative numbers does not return expected value. This is a workaround.
     }
 
     @Override

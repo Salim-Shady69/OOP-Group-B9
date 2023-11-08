@@ -1,3 +1,5 @@
+// Class is used to store doubles x and y referring to the positions of Cars.
+
 public class Position {
     private double x;
     private double y;
