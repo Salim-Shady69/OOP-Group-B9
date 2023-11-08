@@ -132,7 +132,7 @@ public class TestSaab {
     public void testSaabHighGasTurboOff(){
         saab.setTurboOff();
         saab.gas(1);
-        double cappedGas = saab.getCurrentSpeed(); //1.25
+        double cappedGas = saab.getCurrentSpeed();
         saab.gas(10);
         assertEquals(saab.getCurrentSpeed(), cappedGas * 2, 0.0);
     }
