@@ -111,6 +111,15 @@ public class TestSaab {
     }
 
     @Test
+    public void testSaabCrazyBrake(){
+        saab.setTurboOff();
+        saab.gas(1);
+        saab.gas(1);
+        saab.brake(1000000);
+        assertTrue(saab.getCurrentSpeed() == 1.25);
+
+    }
+    @Test
     public void testSaabHighGasTurboOn(){
         saab.setTurboOn();
         saab.gas(1);
@@ -127,5 +136,4 @@ public class TestSaab {
         saab.gas(10);
         assertEquals(saab.getCurrentSpeed(), cappedGas * 2, 0.0);
     }
-
 }
