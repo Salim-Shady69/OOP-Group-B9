@@ -49,6 +49,19 @@ public class TestVolvo {
         assertEquals(0.625, volvo.getCurrentSpeed(), 0);
     }
 
+    @Test
+    public void testVolvoCrazyGas(){
+        volvo.gas(100000);
+        assertEquals(1.25, volvo.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testVolvoCrazyBrake(){
+        volvo.gas(1);
+        volvo.gas(1);
+        volvo.brake(1);
+        assertEquals(1.25, volvo.getCurrentSpeed(), 0);
+    }
 
 }
 

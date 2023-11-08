@@ -129,6 +129,11 @@ public class TestCar {
         assertTrue((volvo.getDirection() == 270) && (saab.getDirection() == 270));
     }
 
+    @Test
+    public void testGasReducesSpeed(){
+        volvo.gas(-10);
+        saab.gas(-1);
+    }
 
 
 
