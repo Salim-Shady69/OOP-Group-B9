@@ -40,13 +40,11 @@ public abstract class Car implements Movable {
         currentSpeed = 0;
     }
 
-    protected double speedFactor(){
-        return enginePower * 0.01;
-    }
+    protected abstract double speedFactor();
 
-    protected void incrementSpeed(double amount) {}
+    protected abstract void incrementSpeed(double amount);
 
-    protected void decrementSpeed(double amount) {}
+    protected abstract void decrementSpeed(double amount);
 
     // TODO fix this method according to lab pm :)
     public void gas(double amount){
@@ -63,12 +61,16 @@ public abstract class Car implements Movable {
         switch(direction) {
             case 0: // increase x
                 position.setX(position.getX() + getCurrentSpeed());
+                break;
             case 90: // increase y
                 position.setY(position.getY() + getCurrentSpeed());
+                break;
             case 180: // decrease x
                 position.setX(position.getX() - getCurrentSpeed());
+                break;
             case 270: // decrease y
                 position.setY(position.getY() - getCurrentSpeed());
+                break;
         }
     }
 

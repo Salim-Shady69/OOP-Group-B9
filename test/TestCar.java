@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 import java.awt.*;
 
-public class MekanikerTest {
+public class TestCar {
 
     private Saab95 saab;
     private Volvo240 volvo;
@@ -39,13 +39,10 @@ public class MekanikerTest {
 
     @Test
     public void testStopEngine() {
-
         volvo.startEngine();
         saab.startEngine();
 
         assertTrue((volvo.getCurrentSpeed() != 0) && (saab.getCurrentSpeed() != 0));
-
-
     }
 
     @Test
@@ -65,11 +62,56 @@ public class MekanikerTest {
     }
 
     @Test
-    public void testMove(){
+    public void testMoveDirection0(){
+        volvo.startEngine();
+        double volvoSpeed = volvo.getCurrentSpeed();
+        double expectedX = 0 + volvoSpeed;
+        double expectedY = 0;
+        volvo.move();
+        Position newPosition = volvo.getPosition();
 
-
+        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
     }
 
+    @Test
+    public void testMoveDirection90(){
+        volvo.startEngine();
+        volvo.turnLeft();
+        double volvoSpeed = volvo.getCurrentSpeed();
+        double expectedX = 0;
+        double expectedY = 0 + volvoSpeed;
+        volvo.move();
+        Position newPosition = volvo.getPosition();
+
+        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
+    }
+
+    @Test
+    public void testMoveDirection180(){
+        volvo.startEngine();
+        volvo.turnLeft();
+        volvo.turnLeft();
+        double volvoSpeed = volvo.getCurrentSpeed();
+        double expectedX = 0 - volvoSpeed;
+        double expectedY = 0;
+        volvo.move();
+        Position newPosition = volvo.getPosition();
+
+        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
+    }
+
+    @Test
+    public void testMoveDirection270(){
+        volvo.startEngine();
+        volvo.turnRight();
+        double volvoSpeed = volvo.getCurrentSpeed();
+        double expectedX = 0;
+        double expectedY = 0 - volvoSpeed;
+        volvo.move();
+        Position newPosition = volvo.getPosition();
+
+        assertTrue((newPosition.getX() == expectedX) && (newPosition.getY() == expectedY));
+    }
 
     @Test
     public void testTurnLeft() {
