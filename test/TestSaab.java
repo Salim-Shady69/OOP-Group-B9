@@ -74,4 +74,58 @@ public class TestSaab {
         assertEquals(8.125, saab.getCurrentSpeed(), 0.01);
     }
 
+    @Test
+    public void testSaabGasTurboOn() {
+        saab.setTurboOn();
+        saab.gas(10);
+        assertEquals(16.25, saab.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testSaabGasTurboOff() {
+        saab.setTurboOff();
+        saab.gas(10);
+        assertEquals(12.5, saab.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testSaabBrakeTurboOn() {
+        saab.setTurboOn();
+        saab.gas(10);
+        saab.brake(5);
+        assertEquals(8.125, saab.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testSaabBrakeTurboOff() {
+        saab.setTurboOff();
+        saab.gas(10);
+        saab.brake(5);
+        assertEquals(6.25, saab.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testSaabCrazySpeed(){
+        saab.gas(10000);
+        assertTrue(saab.getCurrentSpeed() <= saab.getEnginePower());
+    }
+
+    @Test
+    public void testSaabHighGasTurboOn(){
+        saab.setTurboOn();
+        saab.gas(1);
+        double cappedGas = saab.getCurrentSpeed();
+        saab.gas(10);
+        assertTrue(saab.getCurrentSpeed() == 3.25);
+    }
+
+    @Test
+    public void testSaabHighGasTurboOff(){
+        saab.setTurboOff();
+        saab.gas(1);
+        double cappedGas = saab.getCurrentSpeed(); //1.25
+        saab.gas(10);
+        assertTrue(saab.getCurrentSpeed() == 2.5);
+    }
+
 }

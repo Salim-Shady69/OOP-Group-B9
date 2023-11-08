@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class Car implements Movable {
 
@@ -48,12 +46,16 @@ public abstract class Car implements Movable {
 
     // TODO fix this method according to lab pm :)
     public void gas(double amount){
-        incrementSpeed(amount);
+        double upperCheck = Math.min(amount, 1);
+        double adjustedAmount = Math.max(upperCheck, 0);
+        incrementSpeed(adjustedAmount);
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        double upperCheck = Math.min(amount, 1);
+        double adjustedAmount = Math.max(upperCheck, 0);
+        decrementSpeed(adjustedAmount);
     }
 
     @Override

@@ -17,6 +17,37 @@ public class TestVolvo {
         assertEquals(1.25, Factor, 0);
     }
 
+    @Test
+    public void testVolvoIncrementSpeed(){
+        volvo.incrementSpeed(10);
+        assertEquals(12.5, volvo.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testVolvoMaxSpeed(){
+        volvo.incrementSpeed(10000);
+        assertEquals(100, volvo.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testVolvoDecrementSpeed(){
+        volvo.incrementSpeed(10);
+        volvo.decrementSpeed(5);
+        assertEquals(6.25, volvo.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testGasVolvo() {
+        volvo.gas(10);
+        assertEquals(12.5, volvo.getCurrentSpeed(), 0);
+    }
+
+    @Test
+    public void testBrakeVolvo() {
+        volvo.gas(10);
+        volvo.brake(5);
+        assertEquals(6.25, volvo.getCurrentSpeed(), 0);
+    }
 
 
 }
