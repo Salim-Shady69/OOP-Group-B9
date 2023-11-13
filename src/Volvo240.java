@@ -9,6 +9,7 @@ public class Volvo240 extends Vehicle {
         color = Color.black;
         enginePower = 100;
         modelName = "src.vehicle.Volvo240";
+        weight = 1400;
         stopEngine();
     }
 

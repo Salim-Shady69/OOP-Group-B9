@@ -9,6 +9,7 @@ public abstract class Vehicle implements Movable {
     protected String modelName;
     protected Position position = new Position(0,0);
     protected int direction = 0;
+    protected int weight; // The weight expressed in Kg
 
     public int getNrDoors(){
         return nrDoors;
