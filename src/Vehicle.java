@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable {
+public abstract class Vehicle implements Movable {
 
     protected int nrDoors;
     protected double enginePower;
@@ -38,11 +38,19 @@ public abstract class Car implements Movable {
         currentSpeed = 0;
     }
 
-    protected abstract double speedFactor();
+    protected double speedFactor() {
+        return enginePower * 0.01;
+    }
 
-    protected abstract void incrementSpeed(double amount);
+    // Math.min ensures that currentSpeed cannot reach above enginePower
+    protected void incrementSpeed(double amount) {
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+    }
 
-    protected abstract void decrementSpeed(double amount);
+    // Math.max ensures that currentSpeed cannot reach below 0
+    protected void decrementSpeed(double amount) {
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    }
 
     //Math.x lines ensures that speed cannot be increased by >1 or <0
     public void gas(double amount){

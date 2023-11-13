@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 import java.awt.*;
 
-public class TestCar {
+public class TestVehicle {
 
     private Saab95 saab;
     private Volvo240 volvo;
