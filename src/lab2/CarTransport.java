@@ -1,46 +1,67 @@
 package lab2;
+import lab1.Position;
+import lab1.Vehicle;
 
-import lab1.*;
+import java.awt.*;
 
-import java.util.List;
+public class CarTransport extends FlakFordon implements ILoader {
 
-public class CarTransport extends FlakFordon implements Loadable {
+    private Loader loaderHelper = new Loader();
 
-    private List<LoadableObject> cargo;
-
-    public void init() {
+    public CarTransport() {
+        nrDoors = 2;
+        enginePower = 530;
+        color = Color.darkGray;
+        modelName = "Scania T144";
+        weight = 14000;
         flak = new Flak(30000, 1);
     }
+
 
     public boolean isLoadable() {
         return getFlakAngle() == 0;
     }
 
-    public void load(LoadableObject object) {
-
+    public void load(Vehicle vehicle) {
+        if (!(vehicle instanceof CarTransport)) {
+            if (isNotMoving()) {
+                if (vehicle.getWeight() + flak.getCurrentWeight() <= flak.getMaxWeight()) {
+                    if (getPosition().absDistance(vehicle.getPosition()) <= 5.0) {
+                        flak.raiseFlak(true);
+                        flak.modifyCurrentWeight(vehicle.getWeight());
+                        loaderHelper.load(vehicle);
+                        flak.lowerFlak(true);
+                    }
+                }
+            }
+        }
     }
-    public void unload(LoadableObject object){
-        unload(1);
+
+    public void unload(Vehicle vehicle) {
+        unloadLast();
     }
 
-    public void unload(int amount) {
+    public void unloadLast() {
+        flak.raiseFlak(true);
+        //flak.modifyCurrentWeight(-vehicle.getWeight());)
+        loaderHelper.unloadLast();
 
+        flak.lowerFlak(true);
     }
 
     public void checkCargo() {
 
     }
-
-    /*
-    public class Bilverkstad {
-
-        Cartransport billager;
-
-        billager.unload(kjawdjka);
-
-        billager.load(adbwke);
-
-     */
-
+    @Override
+    public void move(){
+        super.move();
+        Position newPosition = getPosition();
+        int newDirection = getDirection();
+        for (Vehicle v : loaderHelper.getCargo()){
+            v.getPosition().setX(newPosition.getX());
+            v.getPosition().setY(newPosition.getY());
+            v.setDirection(newDirection);
+        }
+    }
 }
 

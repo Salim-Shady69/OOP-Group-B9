@@ -24,4 +24,10 @@ public class Position {
     public void setY(double y) {
         this.y = y;
     }
+
+    public double absDistance( Position otherPosition) {
+        double xDistance = Math.abs(getX() - otherPosition.getX());
+        double yDistance = Math.abs(getY() - otherPosition.getY());
+        return Math.sqrt(Math.pow(xDistance,2) + Math.pow(yDistance, 2));
+    }
 }

@@ -8,7 +8,7 @@ public class ScaniaP124 extends FlakFordon {
         nrDoors = 2;
         enginePower = 420;
         color = Color.darkGray;
-        modelName = "src.vehicle.flak.ScaniaP124";
+        modelName = "ScaniaP124";
         weight = 14000;
         flak = new Flak(18000, 70);
     }

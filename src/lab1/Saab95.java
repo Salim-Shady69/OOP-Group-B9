@@ -11,7 +11,7 @@ public class Saab95 extends Vehicle {
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
-        modelName = "src.vehicle.cars.Saab95";
+        modelName = "Saab95";
         weight = 1600;
         stopEngine();
     }

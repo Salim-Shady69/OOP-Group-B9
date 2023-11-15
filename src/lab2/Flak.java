@@ -1,7 +1,6 @@
 package lab2;
 
 public class Flak {
-
     private int currentAngle;
     private int maxAngle;
     private int maxWeight;
@@ -18,7 +17,6 @@ public class Flak {
         return currentAngle;
     }
 
-
     public int getMaxWeight() {
         return maxWeight;
     }
@@ -28,7 +26,6 @@ public class Flak {
     public void modifyCurrentWeight(int currentWeight){
         this.currentWeight += currentWeight;
     }
-
 
     public void raiseFlak(boolean complete) {
         currentAngle = maxAngle;
@@ -51,5 +48,4 @@ public class Flak {
         else
             currentAngle -= angle;
     }
-
 }

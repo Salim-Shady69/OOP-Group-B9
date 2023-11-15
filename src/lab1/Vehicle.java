@@ -1,11 +1,8 @@
 package lab1;
 
-import lab2.LoadableObject;
-
 import java.awt.*;
 
-public abstract class Vehicle extends LoadableObject implements Movable {
-
+public abstract class Vehicle implements Movable {
     protected int nrDoors;
     protected double enginePower;
     protected double currentSpeed = 0;
@@ -13,6 +10,7 @@ public abstract class Vehicle extends LoadableObject implements Movable {
     protected String modelName;
     protected Position position = new Position(0,0);
     protected int direction = 0;
+    protected int weight;
 
     public int getNrDoors(){
         return nrDoors;
@@ -30,12 +28,16 @@ public abstract class Vehicle extends LoadableObject implements Movable {
         return currentSpeed;
     }
 
+    public void setColor(Color clr) {
+        color = clr;
+    }
+
     public Color getColor(){
         return color;
     }
 
-    public void setColor(Color clr) {
-        color = clr;
+    public String getModelName(){
+        return modelName;
     }
 
     public void startEngine(){
@@ -108,4 +110,8 @@ public abstract class Vehicle extends LoadableObject implements Movable {
 
     @Override
     public int getDirection() { return direction; }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 }

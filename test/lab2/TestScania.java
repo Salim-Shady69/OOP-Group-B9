@@ -31,7 +31,6 @@ public class TestScania {
         scania.move();
         assertEquals(initial, scania.getPosition());
     }
-
     @Test
     public void testRaiseFlak() {
         scania.flak.raiseFlak(55);
@@ -43,5 +42,27 @@ public class TestScania {
         scania.flak.raiseFlak(70);
         scania.flak.lowerFlak(30);
         assertEquals(40, scania.getFlakAngle());
+    }
+
+    @Test
+    public void testRaiseHigh() {
+        scania.raiseFlak(1000);
+        assertEquals(70, scania.getFlakAngle());
+    }
+
+    @Test
+    public void testLowerLow() {
+        scania.lowerFlak(1000);
+        assertEquals(0, scania.getFlakAngle());
+    }
+    @Test
+    public void testFlakMax(){
+        scania.raiseFlak(true);
+        assertEquals(70,scania.getFlakAngle());
+    }
+    @Test
+    public void testFlakMin(){
+        scania.lowerFlak(true);
+        assertEquals(0,scania.getFlakAngle());
     }
 }

@@ -37,6 +37,4 @@ public class FlakFordon extends Vehicle {
         if (isNotMoving())
             flak.lowerFlak(angle);
     }
-
-
 }
