@@ -22,7 +22,7 @@ public class CarTransport extends FlakFordon implements ILoader {
         return getFlakAngle() == 0;
     }
 
-    public void load(Vehicle vehicle) {
+    public void load(Loadable vehicle) {
         if (!(vehicle instanceof CarTransport)) {
             if (isNotMoving()) {
                 if (vehicle.getWeight() + flak.getCurrentWeight() <= flak.getMaxWeight()) {
@@ -37,7 +37,7 @@ public class CarTransport extends FlakFordon implements ILoader {
         }
     }
 
-    public void unload(Vehicle vehicle) {
+    public void unload(Loadable vehicle) {
         unloadLast();
     }
 
@@ -57,7 +57,7 @@ public class CarTransport extends FlakFordon implements ILoader {
         super.move();
         Position newPosition = getPosition();
         int newDirection = getDirection();
-        for (Vehicle v : loaderHelper.getCargo()){
+        for (Loadable v : loaderHelper.getCargo()){
             v.getPosition().setX(newPosition.getX());
             v.getPosition().setY(newPosition.getY());
             v.setDirection(newDirection);
