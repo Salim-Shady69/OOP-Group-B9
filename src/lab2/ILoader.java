@@ -3,8 +3,8 @@ import lab1.Vehicle;
 
 public interface ILoader {
 
-    void load(Vehicle vehicle);
-    void unload(Vehicle vehicle);
+    void load(Loadable vehicle);
+    void unload(Loadable vehicle);
     void unloadLast();
     void checkCargo();
 }
