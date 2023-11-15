@@ -3,9 +3,7 @@ package lab2;
 import java.awt.*;
 
 public class ScaniaP124 extends FlakFordon {
-
-
-
+    
     public ScaniaP124() {
         nrDoors = 2;
         enginePower = 420;
