@@ -9,11 +9,11 @@ import static org.junit.Assert.assertTrue;
 
 public class TestScania {
 
-    public ScaniaP124 scania;
+    public Scania scania;
 
     @Before
     public void init() {
-        scania = new ScaniaP124();
+        scania = new Scania();
     }
 
     @Test

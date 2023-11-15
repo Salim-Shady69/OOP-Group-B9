@@ -1,17 +1,15 @@
 package lab2;
 
-import lab1.Vehicle;
-
 import java.util.ArrayList;
 
 public class Loader {
-    private ArrayList<Loadable> cargo = new ArrayList<>(20); // Loading capacity 20 vehicles
+    private ArrayList<IsLoadable> cargo = new ArrayList<>(20); // Loading capacity 20 vehicles
 
-    public void load(Loadable vehicle){
+    public void load(IsLoadable vehicle){
         cargo.add((vehicle));
     }
 
-    public void unload(Loadable vehicle){
+    public void unload(IsLoadable vehicle){
         cargo.remove(vehicle);
     }
 
@@ -19,12 +17,12 @@ public class Loader {
         cargo.removeLast();
     }
 
-    public ArrayList<Loadable> getCargo(){
+    public ArrayList<IsLoadable> getCargo(){
         return cargo;
     }
 
     public void checkCargo(){
-        for (Loadable v : cargo){
+        for (IsLoadable v : cargo){
             System.out.println(v.getModelName());
         }
     }

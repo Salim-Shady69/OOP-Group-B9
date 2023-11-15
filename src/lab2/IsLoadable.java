@@ -2,7 +2,7 @@ package lab2;
 
 import lab1.Position;
 
-public interface Loadable {
+public interface IsLoadable {
     int getWeight();
 
     Position getPosition();

@@ -9,10 +9,16 @@ import static org.junit.Assert.assertTrue;
 
 public class TestCarTransport {
 
-    public CarTransport carTransport;
+    private CarTransport carTransport;
+    private Volvo240 volvo;
+    private Saab95 saab;
 
     @Before
-    public void init() {carTransport = new CarTransport();}
+    public void init() {
+        carTransport = new CarTransport();
+        volvo = new Volvo240();
+        saab = new Saab95();
+    }
 
     @Test
     public void testUnloadVehicle(){
@@ -36,6 +42,14 @@ public class TestCarTransport {
         Position carPos = volvo.getPosition();
 
         assertTrue(((transportPos.getX() == carPos.getX()) && (transportPos.getY() == carPos.getY())));
+    }
+
+    @Test
+    public void testLoadIncorrectVehicle(){
+        CarTransport secondTransport = new CarTransport();
+        Volvo240 volvo = new Volvo240();
+        //carTransport.load(secondTransport);
+        carTransport.load(volvo);
     }
 
 }
