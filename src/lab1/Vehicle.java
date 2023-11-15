@@ -1,6 +1,10 @@
+package lab1;
+
+import lab2.LoadableObject;
+
 import java.awt.*;
 
-public abstract class Vehicle implements Movable {
+public abstract class Vehicle extends LoadableObject implements Movable {
 
     protected int nrDoors;
     protected double enginePower;
@@ -9,10 +13,13 @@ public abstract class Vehicle implements Movable {
     protected String modelName;
     protected Position position = new Position(0,0);
     protected int direction = 0;
-    protected int weight; // The weight expressed in Kg
 
     public int getNrDoors(){
         return nrDoors;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 
     public double getEnginePower(){

@@ -1,4 +1,4 @@
-// Class is used to store doubles x and y referring to the positions of Cars.
+package lab1;// Class is used to store doubles x and y referring to the positions of Cars.
 
 public class Position {
     private double x;

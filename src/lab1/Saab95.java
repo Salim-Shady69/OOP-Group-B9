@@ -1,3 +1,5 @@
+package lab1;
+
 import java.awt.*;
 
 public class Saab95 extends Vehicle {
@@ -9,7 +11,7 @@ public class Saab95 extends Vehicle {
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
-        modelName = "src.vehicle.Saab95";
+        modelName = "src.vehicle.cars.Saab95";
         weight = 1600;
         stopEngine();
     }
