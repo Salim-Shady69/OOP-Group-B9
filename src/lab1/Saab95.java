@@ -1,10 +1,8 @@
 package lab1;
 
-import lab2.Loadable;
-
 import java.awt.*;
 
-public class Saab95 extends Vehicle implements Loadable {
+public class Saab95 extends Car {
 
     private boolean turboOn;
     

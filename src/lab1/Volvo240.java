@@ -1,10 +1,8 @@
 package lab1;
 
-import lab2.Loadable;
-
 import java.awt.*;
 
-public class Volvo240 extends Vehicle implements Loadable {
+public class Volvo240 extends Car {
 
     public final static double trimFactor = 1.25;
 
