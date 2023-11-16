@@ -3,7 +3,7 @@ package lab2;
 import java.util.LinkedList;
 
 public class LoadCarrier<T> {
-    private LinkedList<T> cargo = new LinkedList<>();
+    private final LinkedList<T> cargo = new LinkedList<>();
 
     public void load(T vehicle){
         cargo.add((vehicle));
@@ -21,6 +21,9 @@ public class LoadCarrier<T> {
         return cargo;
     }
 
+    public int sizeOfCargo(){
+        return cargo.size();
+    }
 
     // A loader helper that does the loading functions per request of the cargo-holder
 }
