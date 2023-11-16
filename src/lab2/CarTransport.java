@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class CarTransport extends TruckBedTruck implements ILoader {
 
-    private LoadCarrier loadCarrier = new LoadCarrier();
+    private LoadCarrier<Loadable> loadCarrier = new LoadCarrier();
     private int maxUnitWeight;
     private int maxNumOfUnits;
 

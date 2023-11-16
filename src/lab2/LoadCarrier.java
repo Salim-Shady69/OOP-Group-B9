@@ -2,29 +2,25 @@ package lab2;
 
 import java.util.LinkedList;
 
-public class LoadCarrier {
-    private LinkedList<Loadable> cargo = new LinkedList<>();
+public class LoadCarrier<T> {
+    private LinkedList<T> cargo = new LinkedList<>();
 
-    public void load(Loadable vehicle){
+    public void load(T vehicle){
         cargo.add((vehicle));
     }
 
-    public Loadable unload(int index){
+    public T unload(int index){
         return cargo.remove(index);
     }
 
-    public Loadable unloadLast() {
+    public T unloadLast() {
         return cargo.removeLast();
     }
 
-    public LinkedList<Loadable> getCargo(){
+    public LinkedList<T> getCargo(){
         return cargo;
     }
 
-    public void checkCargo(){
-        for (Loadable v : cargo){
-            System.out.println(v.getModelName());
-        }
-    }
+
     // A loader helper that does the loading functions per request of the cargo-holder
 }
