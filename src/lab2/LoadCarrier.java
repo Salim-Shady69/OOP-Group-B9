@@ -5,6 +5,12 @@ import java.util.LinkedList;
 public class LoadCarrier<T> {
     private final LinkedList<T> cargo = new LinkedList<>();
 
+    private int carryLimit;
+
+    public LoadCarrier(int carryLimit) {
+        this.carryLimit = carryLimit;
+    }
+
     public void load(T vehicle){
         cargo.add((vehicle));
     }
