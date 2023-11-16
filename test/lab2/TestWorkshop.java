@@ -1,7 +1,6 @@
 package lab2;
 
-import lab1.Saab95;
-import lab1.Volvo240;
+import lab1.*;
 import org.junit.Before;
 import org.junit.Test;
 

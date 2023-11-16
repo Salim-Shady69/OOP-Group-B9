@@ -73,8 +73,6 @@ public class TestCarTransport {
         carTransport.raiseTruckBed(1);
         carTransport.startEngine();
         assertThrows(LoaderException.class,()->{carTransport.load(saab);});
-        //assertFalse(carTransport.loaderHelper.getCargo.contains(saab));
-        //Ovan är vad jag hade velat skriva, men eftersom loaderHelper är privat så kan jag inte det >:(
     }
 
     @Test
@@ -120,7 +118,6 @@ public class TestCarTransport {
         carTransport.load(saab);
         Loadable unloaded = carTransport.unload();
         assertTrue(unloaded.equals(saab) && carTransport.getLoadCarrier().sizeOfCargo() == 1);
-
     }
 
 
