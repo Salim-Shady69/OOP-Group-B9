@@ -5,19 +5,18 @@ import java.awt.*;
 
 public class CarTransport extends TruckBedTruck implements ILoader {
 
-    private final LoadCarrier<Loadable> loadCarrier = new LoadCarrier<>();
+    private final LoadCarrier<Loadable> loadCarrier;
     private final int maxUnitWeight;
-    private final int maxNumOfUnits;
 
-    public CarTransport() {
-        super(30000, 1);
+    public CarTransport(int maxLoadWeight, int maxUnits) {
+        super(maxLoadWeight, 1);
+        loadCarrier = new LoadCarrier<>(maxUnits);
         nrDoors = 2;
         enginePower = 700;
         color = Color.darkGray;
         modelName = "Scania T144";
         weight = 14000;
         maxUnitWeight = 3000;
-        maxNumOfUnits = 12;
     }
 
     public LoadCarrier<Loadable> getLoadCarrier() {return loadCarrier;}
@@ -27,7 +26,7 @@ public class CarTransport extends TruckBedTruck implements ILoader {
     }
 
     private boolean checkLoadRestrictions(Loadable vehicle){
-        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight && loadCarrier.sizeOfCargo() < maxNumOfUnits);
+        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight && loadCarrier.sizeOfCargo() < loadCarrier.getMaxUnits());
     }
 
     private boolean checkDistanceToLoad(Loadable vehicle){
