@@ -11,7 +11,7 @@ public class TestCarTransport {
     public CarTransport carTransport;
 
     @Before
-    public void init() {carTransport = new CarTransport();}
+    public void init() {carTransport = new CarTransport(30000, 12);}
 
     @Test
     public void testUnloadEmptyLast() throws LoaderException {
@@ -102,7 +102,7 @@ public class TestCarTransport {
 
     @Test
     public void testLoadIncorrectVehicle() throws LoaderException {
-        CarTransport secondTransport = new CarTransport();
+        CarTransport secondTransport = new CarTransport(12000, 6);
         Volvo240 volvo = new Volvo240();
         //carTransport.load(secondTransport);
         assertThrows(LoaderException.class, ()->{carTransport.load(volvo);});
