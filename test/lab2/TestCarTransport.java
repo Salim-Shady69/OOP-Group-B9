@@ -28,7 +28,7 @@ public class TestCarTransport {
     @Test
     public void testLoadVehicle(){
         carTransport.stopEngine();
-        carTransport.raiseFlak(true);
+        carTransport.raiseTruckBed(true);
     }
 
     @Test

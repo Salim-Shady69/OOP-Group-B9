@@ -3,53 +3,54 @@ import lab1.Position;
 
 import java.awt.*;
 
-public class CarTransport extends FlakFordon implements ILoader {
+public class CarTransport extends TruckBedTruck implements ILoader {
 
-    private Loader loaderHelper = new Loader();
+    private LoadCarrier loadCarrier = new LoadCarrier();
     private int maxUnitWeight;
+    private int maxNumOfUnits;
 
     public CarTransport() {
+        super(30000, 1);
         nrDoors = 2;
         enginePower = 700;
         color = Color.darkGray;
         modelName = "Scania T144";
         weight = 14000;
-        flak = new Flak(30000, 1);
         maxUnitWeight = 3000;
+        maxNumOfUnits = 12;
     }
 
 
     public boolean isLoadable() {
-        return getFlakAngle() == 0;
+        return getCurrentAngle() == 0;
     }
 
-    private boolean checkWeightOfLoad(IsLoadable vehicle){
-        return (vehicle.getWeight() + flak.getCurrentWeight() <= flak.getMaxWeight() && vehicle.getWeight() <= maxUnitWeight);
+    private boolean checkWeightOfLoad(Loadable vehicle){
+        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight);
     }
 
-    private boolean checkDistanceToLoad(IsLoadable vehicle){
+    private boolean checkDistanceToLoad(Loadable vehicle){
         return getPosition().absDistance(vehicle.getPosition()) <= 5.0;
     }
 
-    public void load(IsLoadable vehicle) {
+    public void load(Loadable vehicle) {
         if (isNotMoving() && checkWeightOfLoad(vehicle) && checkDistanceToLoad(vehicle)) {
-            flak.raiseFlak(true);
-            flak.modifyCurrentWeight(vehicle.getWeight());
-            loaderHelper.load(vehicle);
-            flak.lowerFlak(true);
+            raiseTruckBed(true);
+            modifyCurrentWeight(vehicle.getWeight());
+            loadCarrier.load(vehicle);
+            lowerTruckBed(true);
         }
     }
 
-    public void unload(IsLoadable vehicle) {
-        unloadLast();
+    public Loadable unload(Loadable vehicle) throws LoaderException {
+        throw new LoaderException("Unsupported unload");
     }
 
-    public void unloadLast() {
-        flak.raiseFlak(true);
-        //flak.modifyCurrentWeight(-vehicle.getWeight());)
-        loaderHelper.unloadLast();
-
-        flak.lowerFlak(true);
+    public Loadable unload() {
+        raiseTruckBed(true);
+        //modifyCurrentWeight(-vehicle.getWeight());)
+        lowerTruckBed(true);
+        return loadCarrier.unloadLast();
     }
 
     public void checkCargo() {
@@ -60,7 +61,7 @@ public class CarTransport extends FlakFordon implements ILoader {
         super.move();
         Position newPosition = getPosition();
         int newDirection = getDirection();
-        for (IsLoadable v : loaderHelper.getCargo()){
+        for (Loadable v : loadCarrier.getCargo()){
             v.getPosition().setX(newPosition.getX());
             v.getPosition().setY(newPosition.getY());
             v.setDirection(newDirection);
