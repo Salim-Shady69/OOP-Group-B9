@@ -20,6 +20,7 @@ public class CarTransport extends TruckBedTruck implements ILoader {
         maxNumOfUnits = 12;
     }
 
+    public LoadCarrier<Loadable> getLoadCarrier() {return loadCarrier;}
 
     public boolean isLoadable() {
         return getCurrentAngle() == 1 && isNotMoving();
@@ -37,8 +38,8 @@ public class CarTransport extends TruckBedTruck implements ILoader {
         if (isLoadable() && checkLoadRestrictions(vehicle) && checkDistanceToLoad(vehicle)) {
             loadCarrier.load(vehicle);
             modifyCurrentWeight(vehicle.getWeight());
-            loadCarrier.load(vehicle);
-            lowerTruckBed(true);
+        } else {
+            throw new LoaderException("Transport is not loadable or the vehicle you are trying to load exceeds the limits or is too far away");
         }
     }
 
@@ -46,11 +47,15 @@ public class CarTransport extends TruckBedTruck implements ILoader {
         throw new LoaderException("Unsupported unload");
     }
 
-    public Loadable unload() {
-        raiseTruckBed(true);
-        //modifyCurrentWeight(-vehicle.getWeight());)
-        lowerTruckBed(true);
-        return loadCarrier.unloadLast();
+    public Loadable unload() throws LoaderException {
+        if (isLoadable()) {
+            Loadable vehicle = loadCarrier.unloadLast();
+            modifyCurrentWeight(-vehicle.getWeight());
+            vehicle.getPosition().setX(vehicle.getPosition().getX()-5.0);
+            return vehicle;
+        } else {
+            throw new LoaderException("Transport is not unloadable or has no cars");
+        }
     }
 
 

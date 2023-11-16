@@ -48,20 +48,24 @@ public class TruckBedTruck extends Vehicle {
     }
 
     public void raiseTruckBed(int angle){
-        if (currentAngle + angle > maxAngle)
-            currentAngle = maxAngle;
-        else
-            currentAngle += angle;
+        if (isNotMoving()) {
+            if (currentAngle + angle > maxAngle)
+                currentAngle = maxAngle;
+            else
+                currentAngle += angle;
+        }
     }
 
     public void lowerTruckBed(boolean complete) {
-        currentAngle = 0;
+        if (isNotMoving()) currentAngle = 0;
     }
 
     public void lowerTruckBed(int angle) {
-        if (currentAngle - angle < 0)
-            currentAngle = 0;
-        else
-            currentAngle -= angle;
+        if (isNotMoving()){
+            if (currentAngle - angle < 0)
+                currentAngle = 0;
+            else
+                currentAngle -= angle;
+        }
     }
 }
