@@ -4,31 +4,77 @@ import lab1.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TestCarTransport {
 
-    private CarTransport carTransport;
-    private Volvo240 volvo;
-    private Saab95 saab;
+    public CarTransport carTransport;
 
     @Before
-    public void init() {
-        carTransport = new CarTransport();
-        volvo = new Volvo240();
-        saab = new Saab95();
+    public void init() {carTransport = new CarTransport();}
+
+    @Test
+    public void testUnloadEmptyLast() throws LoaderException {
+        assertThrows(LoaderException.class, ()->{carTransport.unload();});
     }
 
     @Test
-    public void testUnloadVehicle(){
-
-    }
-
-    @Test
-    public void testLoadVehicle(){
-        carTransport.stopEngine();
+    public void testLoadVehicle() throws LoaderException{
+        Volvo240 volvo = new Volvo240();
         carTransport.raiseTruckBed(true);
+        carTransport.load(volvo);
+        assertTrue(carTransport.getLoadCarrier().getCargo().contains(volvo));
+    }
+
+    @Test
+    public void testCargoDirection() throws LoaderException {
+        Volvo240 karusellEnjoyer = new Volvo240();
+        carTransport.raiseTruckBed(true);
+        carTransport.load(karusellEnjoyer);
+        for (int i = 0; i < 17; i++)
+            carTransport.turnLeft();
+        carTransport.turnRight();
+        assertEquals(carTransport.getDirection(), karusellEnjoyer.getDirection());
+    }
+
+    @Test
+    public void testLoadFarAway() throws LoaderException {
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+        Saab95 noWheels = new Saab95();
+        saab.turnRight();
+        volvo.turnLeft();
+
+        for (int i = 0; i < 10; i++) {
+            saab.gas(1);
+            volvo.gas(0.5);
+            saab.move();
+            volvo.move();
+        } //Now they should be godtyckligt far away for testing purposes
+
+        carTransport.raiseTruckBed(true);
+        carTransport.load(noWheels);
+        assertThrows(LoaderException.class, ()->{carTransport.load(saab);});
+        assertThrows(LoaderException.class, ()->{carTransport.load(volvo);});
+    }
+
+    @Test
+    public void testMoveWhenRaised(){
+        Position initialPos = carTransport.getPosition();
+        carTransport.startEngine();
+        carTransport.raiseTruckBed(true);
+        carTransport.move();
+        assertEquals(initialPos, carTransport.getPosition());
+    }
+
+    @Test
+    public void testLoadWithSpeed() throws LoaderException {
+        Saab95 saab = new Saab95();
+        carTransport.raiseTruckBed(1);
+        carTransport.startEngine();
+        assertThrows(LoaderException.class,()->{carTransport.load(saab);});
+        //assertFalse(carTransport.loaderHelper.getCargo.contains(saab));
+        //Ovan är vad jag hade velat skriva, men eftersom loaderHelper är privat så kan jag inte det >:(
     }
 
     @Test
@@ -43,6 +89,14 @@ public class TestCarTransport {
 
         assertTrue(((transportPos.getX() == carPos.getX()) && (transportPos.getY() == carPos.getY())));
     }
+
+    @Test
+    public void testPositionDuringMove() throws LoaderException {
+        Saab95 saab = new Saab95();
+        carTransport.raiseTruckBed(true);
+        carTransport.load(saab);
+    }
+
 
     @Test
     public void testLoadIncorrectVehicle() throws LoaderException {
