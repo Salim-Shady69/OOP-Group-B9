@@ -80,9 +80,13 @@ public class TestCarTransport {
     @Test
     public void testPositionChangeSame() throws LoaderException {
         Volvo240 volvo = new Volvo240();
+        carTransport.raiseTruckBed(10);
         carTransport.load(volvo);
+        carTransport.lowerTruckBed(10);
         carTransport.startEngine();
-        carTransport.move();
+        for (int i = 0; i < 11; i++) {
+           carTransport.move();
+        }
 
         Position transportPos = carTransport.getPosition();
         Position carPos = volvo.getPosition();
