@@ -17,6 +17,12 @@ public class LoadCarrier<T> {
         return maxUnits;
     }
 
+    private int carryLimit;
+
+    public LoadCarrier(int carryLimit) {
+        this.carryLimit = carryLimit;
+    }
+
     public void load(T vehicle){
         cargo.add((vehicle));
     }
