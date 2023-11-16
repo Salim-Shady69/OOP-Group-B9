@@ -5,9 +5,9 @@ import java.awt.*;
 
 public class CarTransport extends TruckBedTruck implements ILoader {
 
-    private LoadCarrier<Loadable> loadCarrier = new LoadCarrier();
-    private int maxUnitWeight;
-    private int maxNumOfUnits;
+    private final LoadCarrier<Loadable> loadCarrier = new LoadCarrier<>();
+    private final int maxUnitWeight;
+    private final int maxNumOfUnits;
 
     public CarTransport() {
         super(30000, 1);
@@ -22,20 +22,20 @@ public class CarTransport extends TruckBedTruck implements ILoader {
 
 
     public boolean isLoadable() {
-        return getCurrentAngle() == 0;
+        return getCurrentAngle() == 1 && isNotMoving();
     }
 
-    private boolean checkWeightOfLoad(Loadable vehicle){
-        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight);
+    private boolean checkLoadRestrictions(Loadable vehicle){
+        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight && loadCarrier.sizeOfCargo() < maxNumOfUnits);
     }
 
     private boolean checkDistanceToLoad(Loadable vehicle){
         return getPosition().absDistance(vehicle.getPosition()) <= 5.0;
     }
 
-    public void load(Loadable vehicle) {
-        if (isNotMoving() && checkWeightOfLoad(vehicle) && checkDistanceToLoad(vehicle)) {
-            raiseTruckBed(true);
+    public void load(Loadable vehicle) throws LoaderException {
+        if (isLoadable() && checkLoadRestrictions(vehicle) && checkDistanceToLoad(vehicle)) {
+            loadCarrier.load(vehicle);
             modifyCurrentWeight(vehicle.getWeight());
             loadCarrier.load(vehicle);
             lowerTruckBed(true);
@@ -53,9 +53,7 @@ public class CarTransport extends TruckBedTruck implements ILoader {
         return loadCarrier.unloadLast();
     }
 
-    public void checkCargo() {
 
-    }
     @Override
     public void move(){
         super.move();
@@ -64,6 +62,24 @@ public class CarTransport extends TruckBedTruck implements ILoader {
         for (Loadable v : loadCarrier.getCargo()){
             v.getPosition().setX(newPosition.getX());
             v.getPosition().setY(newPosition.getY());
+            v.setDirection(newDirection);
+        }
+    }
+
+    @Override
+    public void turnLeft(){
+        super.turnLeft();
+        int newDirection = getDirection();
+        for (Loadable v : loadCarrier.getCargo()){
+            v.setDirection(newDirection);
+        }
+    }
+
+    @Override
+    public void turnRight(){
+        super.turnRight();
+        int newDirection = getDirection();
+        for (Loadable v : loadCarrier.getCargo()){
             v.setDirection(newDirection);
         }
     }

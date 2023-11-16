@@ -32,7 +32,7 @@ public class TestCarTransport {
     }
 
     @Test
-    public void testPositionChangeSame(){
+    public void testPositionChangeSame() throws LoaderException {
         Volvo240 volvo = new Volvo240();
         carTransport.load(volvo);
         carTransport.startEngine();
@@ -45,12 +45,28 @@ public class TestCarTransport {
     }
 
     @Test
-    public void testLoadIncorrectVehicle(){
+    public void testLoadIncorrectVehicle() throws LoaderException {
         CarTransport secondTransport = new CarTransport();
         Volvo240 volvo = new Volvo240();
         //carTransport.load(secondTransport);
-        carTransport.load(volvo);
+        assertThrows(LoaderException.class, ()->{carTransport.load(volvo);});
+
     }
+
+    @Test
+    public void testUnloadVehicle() throws LoaderException {
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab = new Saab95();
+        carTransport.raiseTruckBed(true);
+        carTransport.load(volvo);
+        carTransport.load(saab);
+        Loadable unloaded = carTransport.unload();
+        assertTrue(unloaded.equals(saab) && carTransport.getLoadCarrier().sizeOfCargo() == 1);
+
+    }
+
+
+
 
 }
 
