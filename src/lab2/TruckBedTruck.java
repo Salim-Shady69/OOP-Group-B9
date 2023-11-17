@@ -5,19 +5,9 @@ public class TruckBedTruck extends Vehicle {
 
     Truckbed truckbed;
 
-    /*private int currentAngle;
-    private int maxAngle;
-    private int maxLoadWeight;
-    private int currentLoadWeight;*/
-
     public TruckBedTruck(int maxLoadWeight, int maxAngle) {
         truckbed = new Truckbed(maxLoadWeight, maxAngle);
     }
-
-    /*public boolean isTruckBedSecured() {
-        return getCurrentAngle() == 0;
-    }*/
-
 
     public boolean isNotMoving() {
         return currentSpeed == 0;
