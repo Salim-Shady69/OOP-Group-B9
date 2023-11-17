@@ -14,7 +14,7 @@ public class TestCarTransport {
     public void init() {carTransport = new CarTransport(30000, 12);}
 
     @Test
-    public void testUnloadEmptyLast() throws LoaderException {
+    public void testUnloadEmptyLast() {
         assertThrows(LoaderException.class, ()->{carTransport.unload();});
     }
 
@@ -68,7 +68,7 @@ public class TestCarTransport {
     }
 
     @Test
-    public void testLoadWithSpeed() throws LoaderException {
+    public void testLoadWithSpeed() {
         Saab95 saab = new Saab95();
         carTransport.raiseTruckBed(1);
         carTransport.startEngine();
@@ -101,10 +101,8 @@ public class TestCarTransport {
 
 
     @Test
-    public void testLoadIncorrectVehicle() throws LoaderException {
-        CarTransport secondTransport = new CarTransport(12000, 6);
+    public void testLoadIncorrectVehicle() {
         Volvo240 volvo = new Volvo240();
-        //carTransport.load(secondTransport);
         assertThrows(LoaderException.class, ()->{carTransport.load(volvo);});
 
     }
