@@ -120,6 +120,13 @@ public class TestCarTransport {
         assertTrue(unloaded.equals(saab) && carTransport.getLoadCarrier().sizeOfCargo() == 1);
     }
 
+    @Test
+    public void testUnloadSpecificVehicle() throws LoaderException {
+        Saab95 garbage = new Saab95();
+        carTransport.raiseTruckBed(1);
+        carTransport.load(garbage);
+        assertThrows(LoaderException.class, ()->carTransport.unload(garbage));
+    }
 
 
 
