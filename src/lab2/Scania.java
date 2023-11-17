@@ -2,19 +2,14 @@ package lab2;
 
 import java.awt.*;
 
-public class ScaniaP124 extends FlakFordon {
+public class Scania extends TruckBedTruck {
     
-    public ScaniaP124() {
+    public Scania() {
+        super(18000 , 70);
         nrDoors = 2;
         enginePower = 420;
         color = Color.darkGray;
-        modelName = "ScaniaP124";
+        modelName = "Scania P124";
         weight = 14000;
-        flak = new Flak(18000, 70);
     }
-
-
-
-
-
 }
