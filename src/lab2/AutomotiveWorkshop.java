@@ -8,9 +8,10 @@ public class AutomotiveWorkshop<T extends Vehicle>{
     public AutomotiveWorkshop(int maxUnits) {
         loadCarrier = new LoadCarrier<>(maxUnits);
     }
-    public AutomotiveWorkshop() {
-        loadCarrier = new LoadCarrier<>();
-    }
+
+//    public AutomotiveWorkshop() {
+//        loadCarrier = new LoadCarrier<>();
+//    }
 
     public void add(T vehicle) throws LoaderException {
         if (loadCarrier.sizeOfCargo() < loadCarrier.getMaxUnits())

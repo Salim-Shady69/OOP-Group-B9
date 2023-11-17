@@ -26,13 +26,13 @@ public class TestWorkshop {
 
    @Test
     public void testCreateWorkshopUnlimited() throws LoaderException {
-        AutomotiveWorkshop<Volvo240> workshop = new AutomotiveWorkshop<>();
+        AutomotiveWorkshop<Volvo240> workshop = new AutomotiveWorkshop<>(12);
         workshop.add(volvo);
     }
 
     @Test
     public void testSaabWorkshop(){
-        AutomotiveWorkshop<Saab95> workshop = new AutomotiveWorkshop<>();
+        AutomotiveWorkshop<Saab95> workshop = new AutomotiveWorkshop<>(10);
 
     }
 
@@ -42,5 +42,8 @@ public class TestWorkshop {
         smallWorkshop.add(saab);
         assertThrows(LoaderException.class, ()-> smallWorkshop.add(volvo));
     }
+
+
+
 
 }

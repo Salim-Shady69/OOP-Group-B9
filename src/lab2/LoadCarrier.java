@@ -11,7 +11,7 @@ public class LoadCarrier<T> {
     public LoadCarrier(int maxUnits){
         this.maxUnits = maxUnits;
     }
-    public LoadCarrier(){}
+    //public LoadCarrier(){}
 
     public int getMaxUnits() {
         return maxUnits;
