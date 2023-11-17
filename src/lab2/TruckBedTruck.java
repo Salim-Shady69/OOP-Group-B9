@@ -1,6 +1,5 @@
 package lab2;
 import lab1.*;
-import lab2.Truckbed;
 
 public class TruckBedTruck extends Vehicle {
 
