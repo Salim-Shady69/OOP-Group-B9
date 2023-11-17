@@ -1,22 +1,23 @@
 package lab2;
 import lab1.*;
+import lab2.Truckbed;
 
 public class TruckBedTruck extends Vehicle {
-    
-    private int currentAngle;
+
+    Truckbed truckbed;
+
+    /*private int currentAngle;
     private int maxAngle;
     private int maxLoadWeight;
-    private int currentLoadWeight;
+    private int currentLoadWeight;*/
 
     public TruckBedTruck(int maxLoadWeight, int maxAngle) {
-        this.currentAngle = 0;
-        this.maxLoadWeight = maxLoadWeight;
-        this.maxAngle = maxAngle;
+        truckbed = new Truckbed(maxLoadWeight, maxAngle);
     }
 
-    public boolean isTruckBedSecured() {
+    /*public boolean isTruckBedSecured() {
         return getCurrentAngle() == 0;
-    }
+    }*/
 
 
     public boolean isNotMoving() {
@@ -25,47 +26,31 @@ public class TruckBedTruck extends Vehicle {
 
     @Override
     public void move(){
-        if (isTruckBedSecured())
+        if (truckbed.isTruckBedSecured())
             super.move();
     }
 
-    public int getCurrentAngle() {
-        return currentAngle;
-    }
-
-    public int getMaxLoadWeight() {
-        return maxLoadWeight;
-    }
-
-    public int getCurrentLoadWeight() {return currentLoadWeight;}
-
     public void modifyCurrentWeight(int currentWeight){
-        this.currentLoadWeight += currentWeight;
+        truckbed.modifyCurrentWeight(currentWeight);
     }
 
     public void raiseTruckBed(boolean complete) {
-        if (isNotMoving()) currentAngle = maxAngle;
+        if (isNotMoving())
+            truckbed.raiseTruckBed(complete);
     }
 
-    public void raiseTruckBed(int angle){
-        if (isNotMoving()) {
-            if (currentAngle + angle > maxAngle)
-                currentAngle = maxAngle;
-            else
-                currentAngle += angle;
-        }
+    public void raiseTruckBed(int angle) {
+        if (isNotMoving())
+            truckbed.raiseTruckBed(angle);
     }
 
     public void lowerTruckBed(boolean complete) {
-        if (isNotMoving()) currentAngle = 0;
+        if (isNotMoving())
+            truckbed.lowerTruckBed(complete);
     }
 
     public void lowerTruckBed(int angle) {
-        if (isNotMoving()){
-            if (currentAngle - angle < 0)
-                currentAngle = 0;
-            else
-                currentAngle -= angle;
-        }
+        if (isNotMoving())
+            truckbed.lowerTruckBed(angle);
     }
 }

@@ -20,7 +20,7 @@ public class TestScania {
     public void testRaiseTruckBedWithSpeed() {
         scania.startEngine();
         scania.raiseTruckBed(20);
-        assertEquals(0, scania.getCurrentAngle());
+        assertEquals(0, scania.truckbed.getCurrentAngle());
     }
 
     @Test
@@ -34,35 +34,35 @@ public class TestScania {
     @Test
     public void testRaiseTruckBed() {
         scania.raiseTruckBed(55);
-        assertEquals(55, scania.getCurrentAngle());
+        assertEquals(55, scania.truckbed.getCurrentAngle());
     }
 
     @Test
     public void testLowerTruckBed() {
         scania.raiseTruckBed(70);
         scania.lowerTruckBed(30);
-        assertEquals(40, scania.getCurrentAngle());
+        assertEquals(40, scania.truckbed.getCurrentAngle());
     }
 
     @Test
     public void testRaiseHigh() {
         scania.raiseTruckBed(1000);
-        assertEquals(70, scania.getCurrentAngle());
+        assertEquals(70, scania.truckbed.getCurrentAngle());
     }
 
     @Test
     public void testLowerLow() {
         scania.lowerTruckBed(1000);
-        assertEquals(0, scania.getCurrentAngle());
+        assertEquals(0, scania.truckbed.getCurrentAngle());
     }
     @Test
     public void testTruckBedMax(){
         scania.raiseTruckBed(true);
-        assertEquals(70,scania.getCurrentAngle());
+        assertEquals(70,scania.truckbed.getCurrentAngle());
     }
     @Test
     public void testTruckBedMin(){
         scania.lowerTruckBed(true);
-        assertEquals(0,scania.getCurrentAngle());
+        assertEquals(0,scania.truckbed.getCurrentAngle());
     }
 }

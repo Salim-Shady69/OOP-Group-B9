@@ -16,7 +16,6 @@ public class TestWorkshop {
     public void init(){
         saab = new Saab95();
         volvo = new Volvo240();
-
     }
     @Test
     public void testCreateWorkshop() throws LoaderException{
@@ -43,6 +42,14 @@ public class TestWorkshop {
         assertThrows(LoaderException.class, ()-> smallWorkshop.add(volvo));
     }
 
+    @Test
+    public void testCheckOut() throws LoaderException {
+        AutomotiveWorkshop<Vehicle> workshop = new AutomotiveWorkshop<>(5);
+        workshop.add(volvo);
+        workshop.add(saab);
+        workshop.checkOut(volvo);
+        assertThrows(LoaderException.class, ()->workshop.checkOut(volvo));
+    }
 
 
 

@@ -22,11 +22,11 @@ public class CarTransport extends TruckBedTruck implements ILoader {
     public LoadCarrier<Loadable> getLoadCarrier() {return loadCarrier;}
 
     public boolean isLoadable() {
-        return getCurrentAngle() == 1 && isNotMoving();
+        return truckbed.getCurrentAngle() == 1 && isNotMoving();
     }
 
     private boolean checkLoadRestrictions(Loadable vehicle){
-        return (vehicle.getWeight() + getCurrentLoadWeight() <= getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight && loadCarrier.sizeOfCargo() < loadCarrier.getMaxUnits());
+        return (vehicle.getWeight() + truckbed.getCurrentLoadWeight() <= truckbed.getMaxLoadWeight() && vehicle.getWeight() <= maxUnitWeight && loadCarrier.sizeOfCargo() < loadCarrier.getMaxUnits());
     }
 
     private boolean checkDistanceToLoad(Loadable vehicle){
