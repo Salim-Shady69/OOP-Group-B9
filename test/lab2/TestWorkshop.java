@@ -10,8 +10,6 @@ public class TestWorkshop {
 
     private Saab95 saab;
     private Volvo240 volvo;
-    private Scania scania;
-    private CarTransport carTransport;
     @Before
     public void init(){
         saab = new Saab95();
@@ -27,12 +25,6 @@ public class TestWorkshop {
     public void testCreateWorkshopUnlimited() throws LoaderException {
         AutomotiveWorkshop<Volvo240> workshop = new AutomotiveWorkshop<>(12);
         workshop.add(volvo);
-    }
-
-    @Test
-    public void testSaabWorkshop(){
-        AutomotiveWorkshop<Saab95> workshop = new AutomotiveWorkshop<>(10);
-
     }
 
     @Test
