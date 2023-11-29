@@ -2,7 +2,7 @@ package lab2;
 
 import java.awt.*;
 
-public class Scania extends TruckBedTruck {
+public class Scania extends Truck {
     
     public Scania() {
         super(18000 , 70);

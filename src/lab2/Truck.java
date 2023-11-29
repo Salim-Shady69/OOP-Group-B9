@@ -1,11 +1,11 @@
 package lab2;
 import lab1.Vehicle;
 
-public class TruckBedTruck extends Vehicle {
+public class Truck extends Vehicle {
 
     Truckbed truckbed;
 
-    public TruckBedTruck(int maxLoadWeight, int maxAngle) {
+    public Truck(int maxLoadWeight, int maxAngle) {
         truckbed = new Truckbed(maxLoadWeight, maxAngle);
     }
 

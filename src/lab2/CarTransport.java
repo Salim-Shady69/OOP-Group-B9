@@ -3,7 +3,7 @@ import lab1.Position;
 
 import java.awt.*;
 
-public class CarTransport extends TruckBedTruck implements ILoader {
+public class CarTransport extends Truck implements ILoader {
 
     private final LoadCarrier<Loadable> loadCarrier;
     private final int maxUnitWeight;
