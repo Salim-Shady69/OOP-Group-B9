@@ -1,13 +1,10 @@
 package lab2;
 import lab1.Vehicle;
+import lab2.TruckBeds.*;
 
 public abstract class Truck extends Vehicle {
 
-    Truckbed truckbed;
-
-    public Truck(int maxLoadWeight, int maxAngle) {
-        truckbed = new Truckbed(maxLoadWeight, maxAngle);
-    }
+    AbstractBed truckbed;
 
     public boolean isNotMoving() {
         return currentSpeed == 0;
@@ -28,7 +25,7 @@ public abstract class Truck extends Vehicle {
             truckbed.raiseTruckBed();
     }
 
-    public void lowerTruckBed(boolean complete) {
+    public void lowerTruckBed() {
         if (isNotMoving())
             truckbed.lowerTruckBed();
     }

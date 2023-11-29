@@ -1,5 +1,8 @@
 package lab2;
 import lab1.Position;
+import lab2.TruckBeds.AbstractBed;
+import lab2.TruckBeds.CarTransportBed;
+import lab2.TruckBeds.ITruckBed;
 
 import java.awt.*;
 
@@ -8,8 +11,10 @@ public class CarTransport extends Truck implements ILoader {
     private final LoadCarrier<Loadable> loadCarrier;
     private final int maxUnitWeight;
 
+    private ITruckBed truckbed;
+
     public CarTransport(int maxLoadWeight, int maxUnits) {
-        super(maxLoadWeight, 1);
+        truckbed = new CarTransportBed(maxLoadWeight);
         loadCarrier = new LoadCarrier<>(maxUnits);
         nrDoors = 2;
         enginePower = 700;

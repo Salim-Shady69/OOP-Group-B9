@@ -11,7 +11,9 @@ public class TestCarTransport {
     public CarTransport carTransport;
 
     @Before
-    public void init() {carTransport = new CarTransport(30000, 12);}
+    public void init() {
+        carTransport = new CarTransport(30000, 12);
+    }
 
     @Test
     public void testUnloadEmptyLast() {
@@ -95,7 +97,7 @@ public class TestCarTransport {
     @Test
     public void testPositionDuringMove() throws LoaderException {
         Saab95 saab = new Saab95();
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.load(saab);
     }
 
@@ -111,7 +113,7 @@ public class TestCarTransport {
     public void testUnloadVehicle() throws LoaderException {
         Volvo240 volvo = new Volvo240();
         Saab95 saab = new Saab95();
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.load(volvo);
         carTransport.load(saab);
         Loadable unloaded = carTransport.unload();
@@ -121,7 +123,7 @@ public class TestCarTransport {
     @Test
     public void testUnloadSpecificVehicle() throws LoaderException {
         Saab95 garbage = new Saab95();
-        carTransport.raiseTruckBed(1);
+        carTransport.raiseTruckBed();
         carTransport.load(garbage);
         assertThrows(LoaderException.class, ()->carTransport.unload(garbage));
     }
