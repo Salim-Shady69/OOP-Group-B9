@@ -11,8 +11,6 @@ public class CarTransport extends Truck implements ILoader {
     private final LoadCarrier<Loadable> loadCarrier;
     private final int maxUnitWeight;
 
-    private ITruckBed truckbed;
-
     public CarTransport(int maxLoadWeight, int maxUnits) {
         truckbed = new CarTransportBed(maxLoadWeight);
         loadCarrier = new LoadCarrier<>(maxUnits);
