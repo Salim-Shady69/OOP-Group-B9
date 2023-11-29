@@ -21,7 +21,7 @@ public class TestCarTransport {
     @Test
     public void testLoadVehicle() throws LoaderException{
         Volvo240 volvo = new Volvo240();
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.load(volvo);
         assertTrue(carTransport.getLoadCarrier().getCargo().contains(volvo));
     }
@@ -29,7 +29,7 @@ public class TestCarTransport {
     @Test
     public void testCargoDirection() throws LoaderException {
         Volvo240 karusellEnjoyer = new Volvo240();
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.load(karusellEnjoyer);
         for (int i = 0; i < 17; i++)
             carTransport.turnLeft();
@@ -52,7 +52,7 @@ public class TestCarTransport {
             volvo.move();
         } //Now they should be godtyckligt far away for testing purposes
 
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.load(noWheels);
         assertThrows(LoaderException.class, ()->{carTransport.load(saab);});
         assertThrows(LoaderException.class, ()->{carTransport.load(volvo);});
@@ -62,7 +62,7 @@ public class TestCarTransport {
     public void testMoveWhenRaised(){
         Position initialPos = carTransport.getPosition();
         carTransport.startEngine();
-        carTransport.raiseTruckBed(true);
+        carTransport.raiseTruckBed();
         carTransport.move();
         assertEquals(initialPos, carTransport.getPosition());
     }
@@ -70,7 +70,7 @@ public class TestCarTransport {
     @Test
     public void testLoadWithSpeed() {
         Saab95 saab = new Saab95();
-        carTransport.raiseTruckBed(1);
+        carTransport.raiseTruckBed();
         carTransport.startEngine();
         assertThrows(LoaderException.class,()->{carTransport.load(saab);});
     }
@@ -78,9 +78,9 @@ public class TestCarTransport {
     @Test
     public void testPositionChangeSame() throws LoaderException {
         Volvo240 volvo = new Volvo240();
-        carTransport.raiseTruckBed(10);
+        carTransport.raiseTruckBed();
         carTransport.load(volvo);
-        carTransport.lowerTruckBed(10);
+        carTransport.lowerTruckBed();
         carTransport.startEngine();
         for (int i = 0; i < 11; i++) {
            carTransport.move();

@@ -25,27 +25,30 @@ public class TestScania {
     @Test
     public void testMoveWithTruckBedNotSecured() {
         Position initial = scania.getPosition();
-        scania.raiseTruckBed(true);
+        scania.raiseTruckBed();
         scania.startEngine();
         scania.move();
         assertEquals(initial, scania.getPosition());
     }
     @Test
     public void testRaiseTruckBed() {
-        scania.raiseTruckBed(55);
-        assertEquals(55, scania.truckbed.getCurrentAngle());
+        scania.raiseTruckBed();
+        assertEquals(10, scania.truckbed.getCurrentAngle());
     }
 
     @Test
     public void testLowerTruckBed() {
-        scania.raiseTruckBed(70);
-        scania.lowerTruckBed(30);
-        assertEquals(40, scania.truckbed.getCurrentAngle());
+        scania.raiseTruckBed();
+        scania.raiseTruckBed();
+        scania.lowerTruckBed();
+        assertEquals(10, scania.truckbed.getCurrentAngle());
     }
 
     @Test
     public void testRaiseHigh() {
-        scania.raiseTruckBed(1000);
+        for (int i=0; i<10; i++) {
+            scania.raiseTruckBed();
+        }
         assertEquals(70, scania.truckbed.getCurrentAngle());
     }
 

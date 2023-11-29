@@ -1,7 +1,7 @@
 package lab2;
 import lab1.Vehicle;
 
-public class Truck extends Vehicle {
+public abstract class Truck extends Vehicle {
 
     Truckbed truckbed;
 
@@ -23,23 +23,14 @@ public class Truck extends Vehicle {
         truckbed.modifyCurrentWeight(currentWeight);
     }
 
-    public void raiseTruckBed(boolean complete) {
+    public void raiseTruckBed() {
         if (isNotMoving())
-            truckbed.raiseTruckBed(complete);
-    }
-
-    public void raiseTruckBed(int angle) {
-        if (isNotMoving())
-            truckbed.raiseTruckBed(angle);
+            truckbed.raiseTruckBed();
     }
 
     public void lowerTruckBed(boolean complete) {
         if (isNotMoving())
-            truckbed.lowerTruckBed(complete);
+            truckbed.lowerTruckBed();
     }
 
-    public void lowerTruckBed(int angle) {
-        if (isNotMoving())
-            truckbed.lowerTruckBed(angle);
-    }
 }
