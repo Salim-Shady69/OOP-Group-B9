@@ -9,8 +9,6 @@ public class ScaniaTruckBed extends AbstractBed{
         this.maxLoadWeight = maxLoadWeight;
         maxAngle = 70;
     }
-
-
     public void raiseTruckBed(){
         if (currentAngle + 10 > maxAngle)
             currentAngle = maxAngle;
@@ -32,6 +30,4 @@ public class ScaniaTruckBed extends AbstractBed{
     public int getCurrentLoadWeight() {
         return 0;
     }
-
-
 }
