@@ -29,14 +29,14 @@ public class TestWorkshop {
 
     @Test
     public void testAddTooManyCars() throws LoaderException {
-        AutomotiveWorkshop<Vehicle> smallWorkshop = new AutomotiveWorkshop<>(1);
+        AutomotiveWorkshop<Car> smallWorkshop = new AutomotiveWorkshop<>(1);
         smallWorkshop.add(saab);
         assertThrows(LoaderException.class, ()-> smallWorkshop.add(volvo));
     }
 
     @Test
     public void testCheckOut() throws LoaderException {
-        AutomotiveWorkshop<Vehicle> workshop = new AutomotiveWorkshop<>(5);
+        AutomotiveWorkshop<Car> workshop = new AutomotiveWorkshop<>(5);
         workshop.add(volvo);
         workshop.add(saab);
         workshop.checkOut(volvo);

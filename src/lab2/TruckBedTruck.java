@@ -1,5 +1,5 @@
 package lab2;
-import lab1.*;
+import lab1.Vehicle;
 
 public class TruckBedTruck extends Vehicle {
 
