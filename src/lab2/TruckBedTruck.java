@@ -1,7 +1,7 @@
 package lab2;
 import lab1.*;
 
-public class TruckBedTruck extends Vehicle {
+public class TruckBedTruck extends Vehicle implements ITruckBed {
 
     Truckbed truckbed;
 
