@@ -17,10 +17,6 @@ public class CarTransportBed extends AbstractBed {
         currentAngle = 0;
     }
 
-    public boolean isTruckBedSecured() {
-        return currentAngle == 1;
-    }
-
     public int getCurrentAngle() {
         return currentAngle;
     }

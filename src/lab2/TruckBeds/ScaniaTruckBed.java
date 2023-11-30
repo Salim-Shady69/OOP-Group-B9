@@ -26,8 +26,4 @@ public class ScaniaTruckBed extends AbstractBed{
     public int getCurrentAngle() {
         return currentAngle;
     }
-
-    public int getCurrentLoadWeight() {
-        return 0;
-    }
 }
